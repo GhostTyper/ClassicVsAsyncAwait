@@ -38,7 +38,9 @@ Additionally it's worth to mention that just looping with 1 reader and 1 writer 
 
 # Linux
 
-My test on Linux failed at 16k threads because of a configured system limit. I will investigate in this later.
+My test results on linux differ very much. `async`/`await` is faster there with 1/1 threads. However on the most other scenarios `async`/`await` is slower by a factor of 2. For instance 256/32 threads: 1,1G `ManualResetEvent`/`AutoResetEvent` while 465M `async`/`await`.
+
+I suppose this has something to do with the threadpool performance. I will investigate this further.
 
 # Conclusion
 
